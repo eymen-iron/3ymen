@@ -2,6 +2,8 @@
 
 **PHP 8.1+ Full-Stack MVC Framework — Sifir Harici Bagimlilk**
 
+> [English README](README.en.md)
+
 ```
 composer require 3ymen/framework
 ```
