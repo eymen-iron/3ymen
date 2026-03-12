@@ -1,0 +1,50 @@
+@extends('layout')
+
+@block('title')Kullanicilar@endblock
+
+@block('content')
+    <h1>Kullanici Listesi</h1>
+
+    {{-- Kosullu gosterim --}}
+    @if ($users)
+        <p>Toplam {{ $total }} kullanici bulundu.</p>
+
+        <table border="1" cellpadding="8" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Isim</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user['id'] }}</td>
+                        <td>{{ $user['name'] }}</td>
+                        <td>{{ $user['email'] }}</td>
+                        <td>
+                            @if ($user['role'] === 'admin')
+                                <strong>Admin</strong>
+                            @elseif ($user['role'] === 'moderator')
+                                Moderator
+                            @else
+                                Kullanici
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>Kullanici bulunamadi.</p>
+    @endif
+@endblock
+
+@block('styles')
+<style>
+    table { border-collapse: collapse; }
+    th { background: #f0f0f0; }
+</style>
+@endblock

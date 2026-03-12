@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * 3ymen Framework - CLI Entry Point
+ *
+ * This is the executable CLI binary. Run it with:
+ *   php 3ymen <command> [options] [arguments]
+ *
+ * Examples:
+ *   php 3ymen serve
+ *   php 3ymen serve --port=9000
+ *   php 3ymen route:list
+ *   php 3ymen route:list --method=GET
+ */
+
+define('APP_START', microtime(true));
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = require __DIR__ . '/bootstrap/app.php';
+
+$console = $app->make(\Eymen\Console\Application::class);
+
+$status = $console->run($argv);
+
+exit($status);

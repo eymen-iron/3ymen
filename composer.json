@@ -1,0 +1,51 @@
+{
+    "name": "3ymen/framework",
+    "description": "Pure PHP full-stack MVC framework. Zero external dependencies.",
+    "license": "MIT",
+    "type": "library",
+    "keywords": ["framework", "mvc", "php", "psr-7", "psr-11", "psr-15", "pure-php"],
+    "authors": [
+        {
+            "name": "eymen-iron",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*"
+    },
+    "suggest": {
+        "ext-apcu": "Recommended for high-performance cache/session (default driver)",
+        "3ymen/redis": "Redis adapter for cache, session, queue",
+        "3ymen/websocket": "WebSocket server (Ratchet or Swoole)",
+        "3ymen/queue-redis": "Redis-backed queue driver",
+        "3ymen/mail": "Email sending support"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.0",
+        "phpstan/phpstan": "^2.0",
+        "laravel/pint": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eymen\\": "src/",
+            "App\\": "app/"
+        },
+        "files": ["src/Support/helpers.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

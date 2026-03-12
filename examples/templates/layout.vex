@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@block('title')3ymen App@endblock</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; }
+        nav { background: #333; padding: 10px 20px; margin: -20px -20px 20px; }
+        nav a { color: white; text-decoration: none; margin-right: 15px; }
+        .content { background: white; padding: 20px; border-radius: 8px; }
+        footer { text-align: center; margin-top: 20px; color: #888; }
+    </style>
+    @block('styles')@endblock
+</head>
+<body>
+    <nav>
+        <a href="/">Ana Sayfa</a>
+        <a href="/about">Hakkinda</a>
+        <a href="/contact">Iletisim</a>
+        @if ($user)
+            <a href="/profile">{{ $user['name'] }}</a>
+        @endif
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            @block('content')
+                <p>Varsayilan icerik</p>
+            @endblock
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; {{ $year }} 3ymen Framework</p>
+    </footer>
+
+    @block('scripts')@endblock
+</body>
+</html>

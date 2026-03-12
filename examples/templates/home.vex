@@ -1,0 +1,24 @@
+@extends('layout')
+
+@block('title'){{ $title }} - 3ymen App@endblock
+
+@block('content')
+    <h1>{{ $title }}</h1>
+    <p>{{ $message }}</p>
+
+    {{-- Bu bir Vex yorumudur, HTML ciktisinda gorunmez --}}
+
+    @if ($featured)
+        <h2>One Cikan Yazilar</h2>
+        <ul>
+        @foreach ($featured as $post)
+            <li>
+                <strong>{{ $post['title'] }}</strong>
+                <span>- {{ $post['author'] }}</span>
+            </li>
+        @endforeach
+        </ul>
+    @else
+        <p>Henuz one cikan yazi yok.</p>
+    @endif
+@endblock

@@ -1,0 +1,10 @@
+{% extends "layouts/app" %}
+
+{% block title %}500 Server Error{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 50px;">
+    <h1>500</h1>
+    <p>Internal Server Error.</p>
+</div>
+{% endblock %}

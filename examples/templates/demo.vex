@@ -1,0 +1,66 @@
+{{-- ================================================================== --}}
+{{-- 3ymen Vex Template Engine - Tum Ozellikler Demo                   --}}
+{{-- ================================================================== --}}
+
+{{-- 1. Degisken yazdirma (auto-escape) --}}
+<h1>{{ $title }}</h1>
+<p>{{ $description }}</p>
+
+{{-- 2. Nesne metod cagrisi --}}
+<p>Tarih: {{ $date->format('d.m.Y') }}</p>
+
+{{-- 3. @set ile degisken tanimlama --}}
+@set('greeting', 'Merhaba Dunya')
+<p>{{ $greeting }}</p>
+
+{{-- 4. @if / @elseif / @else --}}
+@if ($role === 'admin')
+    <span class="badge">Admin</span>
+@elseif ($role === 'moderator')
+    <span class="badge">Moderator</span>
+@else
+    <span class="badge">Kullanici</span>
+@endif
+
+{{-- 5. @foreach dongusu --}}
+<ul>
+@foreach ($items as $item)
+    <li>{{ $item['name'] }} - {{ $item['price'] }} TL</li>
+@endforeach
+</ul>
+
+{{-- 6. Ic ice foreach --}}
+@foreach ($categories as $category)
+    <h3>{{ $category['name'] }}</h3>
+    <ul>
+    @foreach ($category['products'] as $product)
+        <li>{{ $product }}</li>
+    @endforeach
+    </ul>
+@endforeach
+
+{{-- 7. @if ve @foreach birlesimleri --}}
+@if ($notifications)
+    <div class="notifications">
+    @foreach ($notifications as $notif)
+        <div class="notif notif-{{ $notif['type'] }}">
+            {{ $notif['message'] }}
+        </div>
+    @endforeach
+    </div>
+@endif
+
+{{-- 8. @include ile partial ekleme --}}
+@include('partials/alert')
+
+{{-- 9. @extends ve @block (bkz: home.vex ve layout.vex) --}}
+{{-- Template inheritance ornegi icin home.vex ve layout.vex dosyalarina bakin --}}
+
+{{-- 10. @php blogu - ham PHP kodu --}}
+@php
+    $computed = array_sum(array_column($items, 'price'));
+@endphp
+<p>Toplam: {{ $computed }} TL</p>
+
+{{-- 11. Vex yorumlari - ciktida gorunmez --}}
+{{-- Bu satir HTML'de gorunmeyecek --}}
